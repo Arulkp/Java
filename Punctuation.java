@@ -3,8 +3,8 @@ class punct{
 
 	public static void main(String args[]){
 
-			String s = "houseno:123@cbe";
-			String out="";
+			String s = "m1a@m";
+			char[] out = new char[15];
 			String out_new = "";
 			int temp = 0;
 			HashMap<Integer,Character> ht = new HashMap<Integer,Character>();
@@ -15,25 +15,21 @@ class punct{
 			}
 			for(int j=s.length()-1;j>=0;j--){
 					if(ht.containsValue(s.charAt(j))){	
-						temp++;
 					 }
 					else{
-						out+= s.charAt(j);
+						out[temp]= s.charAt(j);
+						temp++;	
 					}		
 			}
-			for(int k=0;k<=out.length()-1+temp;k++){
+			for(int k=0;k<=out.length-1;k++){
 				if(ht.containsKey(k)){
-					
-					out_new+= ht.get(k);
-				}
-					if(k<out.length()){
-						out_new+= out.charAt(k);					
+					for(int z = out.length-1;z>k;z--){
+						out[z] = out[z-1];
 					}
-					
+					out[k] = ht.get(k);
 				}
+				}
+				System.out.println(out);
 			
-
-
-			System.out.println(out_new);
 	}
 }
